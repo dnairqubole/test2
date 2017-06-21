@@ -1,0 +1,691 @@
+{
+  "paragraphs": [
+    {
+      "text": "%spark\nval df \u003d Seq(1 -\u003e 2).toDF(\"i\", \"j\")\nval query \u003d df.groupBy(\u0027i).agg(max(\u0027j).as(\"aggOrdering\")).orderBy(sum(\u0027j)).as[(Int, Int)]\nquery.collect contains (1, 2) ",
+      "user": "dnair@qubole.com",
+      "dateUpdated": "Jun 7, 2017 8:06:38 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "JOB UI",
+          "group": "spark",
+          "values": [
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-147-157-199.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1496764406844_0005/jobs/job?spark\u003dtrue\u0026id\u003d0",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-147-157-199.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1496764406844_0005/jobs/job?spark\u003dtrue\u0026id\u003d1"
+          ],
+          "interpreterSettingId": "2CGJ3HP31295361493648705509"
+        }
+      },
+      "jobName": "paragraph_1496865944561_1422730431",
+      "id": "20170607-200544_2061245607",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "df: org.apache.spark.sql.DataFrame \u003d [i: int, j: int]\nquery: org.apache.spark.sql.Dataset[(Int, Int)] \u003d [i: int, aggOrdering: int]\nres0: Boolean \u003d true\n"
+      },
+      "dateCreated": "Jun 7, 2017 8:05:44 PM",
+      "dateStarted": "Jun 7, 2017 8:06:38 PM",
+      "dateFinished": "Jun 7, 2017 8:07:30 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark\nval df \u003d Seq((1, 1), (-1, 1)).toDF(\"key\", \"value\")\ndf.createOrReplaceTempView(\"src\")\nsql(\"SELECT IF(a \u003e 0, a, 0) FROM (SELECT key a FROM src) temp\").show",
+      "user": "dnair@qubole.com",
+      "dateUpdated": "Jun 7, 2017 8:08:29 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1496865998695_1993605854",
+      "id": "20170607-200638_1620509846",
+      "dateCreated": "Jun 7, 2017 8:06:38 PM",
+      "dateStarted": "Jun 7, 2017 8:08:29 PM",
+      "dateFinished": "Jun 7, 2017 8:08:31 PM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "sql(\"SHOW TABLES\").show",
+      "user": "dnair@qubole.com",
+      "dateUpdated": "Jun 12, 2017 12:40:17 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "JOB UI",
+          "group": "spark",
+          "values": [
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-147-157-199.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1496764406844_0021/jobs/job?spark\u003dtrue\u0026id\u003d0"
+          ],
+          "interpreterSettingId": "2CGJ3HP31295361493648705509"
+        }
+      },
+      "jobName": "paragraph_1496866081745_680381237",
+      "id": "20170607-200801_993625002",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "+--------+--------------------+-----------+\n|database|           tableName|isTemporary|\n+--------+--------------------+-----------+\n| default|default_qubole_ai...|      false|\n| default|default_qubole_me...|      false|\n| default|              mydata|      false|\n| default|             mydata2|      false|\n| default|      partitioned_ye|      false|\n| default|       partitions_no|      false|\n| default|        partitions_y|      false|\n| default|                  t1|      false|\n| default|                  t2|      false|\n| default|               tab10|      false|\n| default|            tab10dec|      false|\n+--------+--------------------+-----------+\n\n"
+      },
+      "dateCreated": "Jun 7, 2017 8:08:01 PM",
+      "dateStarted": "Jun 12, 2017 12:40:20 PM",
+      "dateFinished": "Jun 12, 2017 12:40:58 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": " println(sc.version)",
+      "user": "dnair@qubole.com",
+      "dateUpdated": "Jun 7, 2017 8:22:13 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1496866699681_-359356955",
+      "id": "20170607-201819_399771438",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "2.1.0\n"
+      },
+      "dateCreated": "Jun 7, 2017 8:18:19 PM",
+      "dateStarted": "Jun 7, 2017 8:22:13 PM",
+      "dateFinished": "Jun 7, 2017 8:22:13 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "spark.range(1).filter(\u0027id \u003d\u003d\u003d 0).explain(true)",
+      "user": "dnair@qubole.com",
+      "dateUpdated": "Jun 7, 2017 8:30:05 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1496866933459_1958891441",
+      "id": "20170607-202213_1509888777",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "\u003d\u003d Parsed Logical Plan \u003d\u003d\n\u0027Filter (\u0027id \u003d 0)\n+- Range (0, 1, step\u003d1, splits\u003dSome(2))\n\n\u003d\u003d Analyzed Logical Plan \u003d\u003d\nid: bigint\nFilter (id#79L \u003d cast(0 as bigint))\n+- Range (0, 1, step\u003d1, splits\u003dSome(2))\n\n\u003d\u003d Optimized Logical Plan \u003d\u003d\nFilter (id#79L \u003d 0)\n+- Range (0, 1, step\u003d1, splits\u003dSome(2))\n\n\u003d\u003d Physical Plan \u003d\u003d\n*Filter (id#79L \u003d 0)\n+- *Range (0, 1, step\u003d1, splits\u003dSome(2))\n"
+      },
+      "dateCreated": "Jun 7, 2017 8:22:13 PM",
+      "dateStarted": "Jun 7, 2017 8:30:05 PM",
+      "dateFinished": "Jun 7, 2017 8:30:05 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark\nval lines \u003d sc.textFile(\"s3://qubole-dnair/scripts/hadoop/Cartier_for_WinnersCurse.csv\")\nlines.first",
+      "user": "dnair@qubole.com",
+      "dateUpdated": "Jun 7, 2017 8:49:26 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "JOB UI",
+          "group": "spark",
+          "values": [
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-147-157-199.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1496764406844_0005/jobs/job?spark\u003dtrue\u0026id\u003d3"
+          ],
+          "interpreterSettingId": "2CGJ3HP31295361493648705509"
+        }
+      },
+      "jobName": "paragraph_1496867405091_796272210",
+      "id": "20170607-203005_2022571993",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "lines: org.apache.spark.rdd.RDD[String] \u003d s3://qubole-dnair/scripts/hadoop/Cartier_for_WinnersCurse.csv MapPartitionsRDD[32] at textFile at \u003cconsole\u003e:27\nres21: String \u003d auctionid,bid,bidtime,bidder,bidderrate,openbid,price\n"
+      },
+      "dateCreated": "Jun 7, 2017 8:30:05 PM",
+      "dateStarted": "Jun 7, 2017 8:49:26 PM",
+      "dateFinished": "Jun 7, 2017 8:49:28 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "val left \u003d Seq((0, \"aa\"), (0, \"bb\")).toDF(\"id\", \"token\").as[(Int, String)]\nval right \u003d Seq((\"aa\", 0.99), (\"bb\", 0.57)).toDF(\"token\", \"prob\").as[(String, Double)]\nleft.join(broadcast(right), \"token\").explain(extended \u003d true)\n\n",
+      "user": "dnair@qubole.com",
+      "dateUpdated": "Jun 7, 2017 9:13:21 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1496868011205_-2075664911",
+      "id": "20170607-204011_1396798521",
+      "dateCreated": "Jun 7, 2017 8:40:11 PM",
+      "dateStarted": "Jun 7, 2017 9:13:21 PM",
+      "dateFinished": "Jun 7, 2017 9:13:23 PM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "val dataset \u003d Seq((0, \"hello\"), (1, \"world\")).toDF(\"id\", \"text\")\nval upper: String \u003d\u003e String \u003d _.toUpperCase\nimport org.apache.spark.sql.functions.udf\nval upperUDF \u003d udf(upper)\ndataset.withColumn(\"upper\", upperUDF(\u0027text)).show",
+      "user": "dnair@qubole.com",
+      "dateUpdated": "Jun 7, 2017 9:14:06 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1496870001786_-1454613433",
+      "id": "20170607-211321_1814172563",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "dataset: org.apache.spark.sql.DataFrame \u003d [id: int, text: string]\nupper: String \u003d\u003e String \u003d \u003cfunction1\u003e\nimport org.apache.spark.sql.functions.udf\nupperUDF: org.apache.spark.sql.expressions.UserDefinedFunction \u003d UserDefinedFunction(\u003cfunction1\u003e,StringType,Some(List(StringType)))\n+---+-----+-----+\n| id| text|upper|\n+---+-----+-----+\n|  0|hello|HELLO|\n|  1|world|WORLD|\n+---+-----+-----+\n\n"
+      },
+      "dateCreated": "Jun 7, 2017 9:13:21 PM",
+      "dateStarted": "Jun 7, 2017 9:14:06 PM",
+      "dateFinished": "Jun 7, 2017 9:14:09 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "spark.udf.register(\"dinesmyUpper\", (input: String) \u003d\u003e input.toUpperCase)",
+      "user": "dnair@qubole.com",
+      "dateUpdated": "Jun 7, 2017 9:18:39 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1496870046574_-1144662350",
+      "id": "20170607-211406_843772940",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "res36: org.apache.spark.sql.expressions.UserDefinedFunction \u003d UserDefinedFunction(\u003cfunction1\u003e,StringType,Some(List(StringType)))\n"
+      },
+      "dateCreated": "Jun 7, 2017 9:14:06 PM",
+      "dateStarted": "Jun 7, 2017 9:18:39 PM",
+      "dateFinished": "Jun 7, 2017 9:18:39 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "spark.catalog.listFunctions.filter(\u0027name like \"%dines%\").show(false)",
+      "user": "dnair@qubole.com",
+      "dateUpdated": "Jun 7, 2017 9:19:06 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "JOB UI",
+          "group": "spark",
+          "values": [
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-147-157-199.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1496764406844_0005/jobs/job?spark\u003dtrue\u0026id\u003d10",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-147-157-199.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1496764406844_0005/jobs/job?spark\u003dtrue\u0026id\u003d11"
+          ],
+          "interpreterSettingId": "2CGJ3HP31295361493648705509"
+        }
+      },
+      "jobName": "paragraph_1496870126334_-244411221",
+      "id": "20170607-211526_1593807012",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "+------------+--------+-----------+---------+-----------+\n|name        |database|description|className|isTemporary|\n+------------+--------+-----------+---------+-----------+\n|dinesmyUpper|null    |null       |null     |true       |\n+------------+--------+-----------+---------+-----------+\n\n"
+      },
+      "dateCreated": "Jun 7, 2017 9:15:26 PM",
+      "dateStarted": "Jun 7, 2017 9:19:06 PM",
+      "dateFinished": "Jun 7, 2017 9:19:07 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "val left \u003d Seq((0, \"zero\"), (1, \"one\")).toDF(\"id\", \"left\")\nval right \u003d Seq((0, \"zero\"), (2, \"two\"), (3, \"three\")).toDF(\"id\", \"right\")\nleft.join(right, \"id\").show\nleft.join(right, \"id\").explain",
+      "user": "dnair@qubole.com",
+      "dateUpdated": "Jun 7, 2017 9:27:13 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "JOB UI",
+          "group": "spark",
+          "values": [
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-147-157-199.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1496764406844_0005/jobs/job?spark\u003dtrue\u0026id\u003d12",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-147-157-199.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1496764406844_0005/jobs/job?spark\u003dtrue\u0026id\u003d13"
+          ],
+          "interpreterSettingId": "2CGJ3HP31295361493648705509"
+        }
+      },
+      "jobName": "paragraph_1496870144286_-1182028966",
+      "id": "20170607-211544_1282927978",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "left: org.apache.spark.sql.DataFrame \u003d [id: int, left: string]\nright: org.apache.spark.sql.DataFrame \u003d [id: int, right: string]\n+---+----+-----+\n| id|left|right|\n+---+----+-----+\n|  0|zero| zero|\n+---+----+-----+\n\n\u003d\u003d Physical Plan \u003d\u003d\n*Project [id#287, left#288, right#298]\n+- *BroadcastHashJoin [id#287], [id#297], Inner, BuildRight\n   :- LocalTableScan [id#287, left#288]\n   +- BroadcastExchange HashedRelationBroadcastMode(List(cast(input[0, int, false] as bigint)))\n      +- LocalTableScan [id#297, right#298]\n"
+      },
+      "dateCreated": "Jun 7, 2017 9:15:44 PM",
+      "dateStarted": "Jun 7, 2017 9:27:13 PM",
+      "dateFinished": "Jun 7, 2017 9:27:14 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "left.join(right, Seq(\"id\"), \"fullouter\").show\n",
+      "user": "dnair@qubole.com",
+      "dateUpdated": "Jun 7, 2017 9:34:10 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "JOB UI",
+          "group": "spark",
+          "values": [
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-147-157-199.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1496764406844_0005/jobs/job?spark\u003dtrue\u0026id\u003d14",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-147-157-199.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1496764406844_0005/jobs/job?spark\u003dtrue\u0026id\u003d15",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-147-157-199.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1496764406844_0005/jobs/job?spark\u003dtrue\u0026id\u003d16",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-147-157-199.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1496764406844_0005/jobs/job?spark\u003dtrue\u0026id\u003d17",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-147-157-199.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1496764406844_0005/jobs/job?spark\u003dtrue\u0026id\u003d18"
+          ],
+          "interpreterSettingId": "2CGJ3HP31295361493648705509"
+        }
+      },
+      "jobName": "paragraph_1496870233370_-597825249",
+      "id": "20170607-211713_2126267768",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "+---+----+-----+\n| id|left|right|\n+---+----+-----+\n|  1| one| null|\n|  3|null|three|\n|  2|null|  two|\n|  0|zero| zero|\n+---+----+-----+\n\n"
+      },
+      "dateCreated": "Jun 7, 2017 9:17:13 PM",
+      "dateStarted": "Jun 7, 2017 9:34:10 PM",
+      "dateFinished": "Jun 7, 2017 9:34:12 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "// Notice InMemoryRelation in use for cached queries\nval df \u003d spark.range(1).cache\ndf.show\ndf.withColumn(\"newId\", \u0027id).explain(extended \u003d true)\n",
+      "user": "dnair@qubole.com",
+      "dateUpdated": "Jun 7, 2017 9:35:28 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "JOB UI",
+          "group": "spark",
+          "values": [
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-147-157-199.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1496764406844_0005/jobs/job?spark\u003dtrue\u0026id\u003d19",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-147-157-199.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1496764406844_0005/jobs/job?spark\u003dtrue\u0026id\u003d20"
+          ],
+          "interpreterSettingId": "2CGJ3HP31295361493648705509"
+        }
+      },
+      "jobName": "paragraph_1496871250370_1149555947",
+      "id": "20170607-213410_1742306497",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "df: org.apache.spark.sql.Dataset[Long] \u003d [id: bigint]\n+---+\n| id|\n+---+\n|  0|\n+---+\n\n\u003d\u003d Parsed Logical Plan \u003d\u003d\n\u0027Project [*, \u0027id AS newId#342]\n+- Range (0, 1, step\u003d1, splits\u003dSome(2))\n\n\u003d\u003d Analyzed Logical Plan \u003d\u003d\nid: bigint, newId: bigint\nProject [id#326L, id#326L AS newId#342L]\n+- Range (0, 1, step\u003d1, splits\u003dSome(2))\n\n\u003d\u003d Optimized Logical Plan \u003d\u003d\nProject [id#326L, id#326L AS newId#342L]\n+- InMemoryRelation [id#326L], true, 10000, StorageLevel(disk, memory, deserialized, 1 replicas)\n      +- *Range (0, 1, step\u003d1, splits\u003dSome(2))\n\n\u003d\u003d Physical Plan \u003d\u003d\n*Project [id#326L, id#326L AS newId#342L]\n+- InMemoryTableScan [id#326L]\n      +- InMemoryRelation [id#326L], true, 10000, StorageLevel(disk, memory, deserialized, 1 replicas)\n            +- *Range (0, 1, step\u003d1, splits\u003dSome(2))\n"
+      },
+      "dateCreated": "Jun 7, 2017 9:34:10 PM",
+      "dateStarted": "Jun 7, 2017 9:35:28 PM",
+      "dateFinished": "Jun 7, 2017 9:35:29 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "// Clear in-memory cache using SQL\n// Equivalent to spark.catalog.clearCache\nsql(\"CLEAR CACHE\").collect",
+      "user": "dnair@qubole.com",
+      "dateUpdated": "Jun 7, 2017 9:36:12 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1496871328025_-1003975592",
+      "id": "20170607-213528_668377774",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "res56: Array[org.apache.spark.sql.Row] \u003d Array()\n"
+      },
+      "dateCreated": "Jun 7, 2017 9:35:28 PM",
+      "dateStarted": "Jun 7, 2017 9:36:12 PM",
+      "dateFinished": "Jun 7, 2017 9:36:13 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "sql(\"CACHE TABLE [tableName]\")\n//You could however use LAZY keyword to make caching lazy.\nsql(\"CACHE LAZY TABLE [tableName]\")\nREFRESH TABLE [tableName] \n//to refresh a cached table.\nUNCACHE TABLE (IF EXISTS)? [tableName]\n//to remove a table from cache.",
+      "user": "dnair@qubole.com",
+      "dateUpdated": "Jun 7, 2017 9:38:50 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1496871372795_1947292014",
+      "id": "20170607-213612_97466895",
+      "dateCreated": "Jun 7, 2017 9:36:12 PM",
+      "dateStarted": "Jun 7, 2017 9:38:51 PM",
+      "dateFinished": "Jun 7, 2017 9:38:51 PM",
+      "status": "ERROR",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "val q1 \u003d spark.range(5).filter($\"id\" % 2 \u003d\u003d\u003d 0).select(\"id\").explain",
+      "user": "dnair@qubole.com",
+      "dateUpdated": "Jun 7, 2017 9:39:31 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1496871530906_-2118902928",
+      "id": "20170607-213850_1308284935",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "\u003d\u003d Physical Plan \u003d\u003d\n*Filter ((id#354L % 2) \u003d 0)\n+- *Range (0, 5, step\u003d1, splits\u003dSome(2))\nq1: Unit \u003d ()\n"
+      },
+      "dateCreated": "Jun 7, 2017 9:38:50 PM",
+      "dateStarted": "Jun 7, 2017 9:39:31 PM",
+      "dateFinished": "Jun 7, 2017 9:39:32 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "val q1 \u003d spark.range(5).cache.filter($\"id\" % 2 \u003d\u003d\u003d 0).select(\"id\").explain\n// cache at the end\nval q2 \u003d spark.range(1).filter($\"id\" % 2 \u003d\u003d\u003d 0).select(\"id\").cache.explain",
+      "user": "dnair@qubole.com",
+      "dateUpdated": "Jun 7, 2017 9:41:33 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1496871571862_-1806609415",
+      "id": "20170607-213931_2053807609",
+      "dateCreated": "Jun 7, 2017 9:39:31 PM",
+      "dateStarted": "Jun 7, 2017 9:39:54 PM",
+      "dateFinished": "Jun 7, 2017 9:39:54 PM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1496871594424_820117299",
+      "id": "20170607-213954_1460575575",
+      "dateCreated": "Jun 7, 2017 9:39:54 PM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "spark",
+  "id": "A6V9JVYKNE1498054843",
+  "angularObjects": {
+    "2CC1VHA3P295361490814775486": [],
+    "2CE4Y2R3M295361490814775490": [],
+    "2CGJ3HP31295361493648705509": [],
+    "2CCWBVN5A295361490814775494": []
+  },
+  "config": {},
+  "info": {},
+  "source": "FCN"
+}
