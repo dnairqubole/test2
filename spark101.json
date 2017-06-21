@@ -1,0 +1,390 @@
+{
+  "paragraphs": [
+    {
+      "text": "val sampleData \u003d Seq( (\"bob\",\"Developer\",125000),(\"mark\",\"Developer\",108000),(\"carl\",\"Tester\",70000),(\"peter\",\"Developer\",185000),(\"jon\",\"Tester\",65000),(\"roman\",\"Tester\",82000),(\"simon\",\"Developer\",98000),(\"eric\",\"Developer\",144000),(\"carlos\",\"Tester\",75000),(\"henry\",\"Developer\",110000)).toDF(\"Name\",\"Role\",\"Salary\")",
+      "user": "dnair@qubole.com",
+      "dateUpdated": "Jun 15, 2017 2:56:51 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1497197537705_1099693444",
+      "id": "20170611-161217_1107570203",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "sampleData: org.apache.spark.sql.DataFrame \u003d [Name: string, Role: string ... 1 more field]\n"
+      },
+      "dateCreated": "Jun 11, 2017 4:12:17 PM",
+      "dateStarted": "Jun 15, 2017 2:56:53 PM",
+      "dateFinished": "Jun 15, 2017 2:57:30 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "import org.apache.spark.sql.expressions.Window\nimport org.apache.spark.sql.functions._\nsampleData.show",
+      "user": "dnair@qubole.com",
+      "dateUpdated": "Jun 11, 2017 4:12:51 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1497197552387_-1927110829",
+      "id": "20170611-161232_957926913",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "import org.apache.spark.sql.expressions.Window\nimport org.apache.spark.sql.functions._\n+------+---------+------+\n|  Name|     Role|Salary|\n+------+---------+------+\n|   bob|Developer|125000|\n|  mark|Developer|108000|\n|  carl|   Tester| 70000|\n| peter|Developer|185000|\n|   jon|   Tester| 65000|\n| roman|   Tester| 82000|\n| simon|Developer| 98000|\n|  eric|Developer|144000|\n|carlos|   Tester| 75000|\n| henry|Developer|110000|\n+------+---------+------+\n\n"
+      },
+      "dateCreated": "Jun 11, 2017 4:12:32 PM",
+      "dateStarted": "Jun 11, 2017 4:12:51 PM",
+      "dateFinished": "Jun 11, 2017 4:12:52 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "val cumSum \u003d sampleData.withColumn(\"cumulativeSum\", sum(sampleData(\"Salary\"))\n             .over( Window.partitionBy(\"Role\").orderBy(\"Salary\")))\n             cumSum.show",
+      "user": "dnair@qubole.com",
+      "dateUpdated": "Jun 11, 2017 4:13:19 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "JOB UI",
+          "group": "spark",
+          "values": [
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-147-157-199.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1496764406844_0020/jobs/job?spark\u003dtrue\u0026id\u003d0",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-147-157-199.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1496764406844_0020/jobs/job?spark\u003dtrue\u0026id\u003d1",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-147-157-199.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1496764406844_0020/jobs/job?spark\u003dtrue\u0026id\u003d2",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-147-157-199.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1496764406844_0020/jobs/job?spark\u003dtrue\u0026id\u003d3",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-147-157-199.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1496764406844_0020/jobs/job?spark\u003dtrue\u0026id\u003d4"
+          ],
+          "interpreterSettingId": "2CGJ3HP31295361493648705509"
+        }
+      },
+      "jobName": "paragraph_1497197571538_981236755",
+      "id": "20170611-161251_1739773917",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "cumSum: org.apache.spark.sql.DataFrame \u003d [Name: string, Role: string ... 2 more fields]\n+------+---------+------+-------------+\n|  Name|     Role|Salary|cumulativeSum|\n+------+---------+------+-------------+\n|   jon|   Tester| 65000|        65000|\n|  carl|   Tester| 70000|       135000|\n|carlos|   Tester| 75000|       210000|\n| roman|   Tester| 82000|       292000|\n| simon|Developer| 98000|        98000|\n|  mark|Developer|108000|       206000|\n| henry|Developer|110000|       316000|\n|   bob|Developer|125000|       441000|\n|  eric|Developer|144000|       585000|\n| peter|Developer|185000|       770000|\n+------+---------+------+-------------+\n\n"
+      },
+      "dateCreated": "Jun 11, 2017 4:12:51 PM",
+      "dateStarted": "Jun 11, 2017 4:13:19 PM",
+      "dateFinished": "Jun 11, 2017 4:13:25 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "val cumSumHours \u003d sampleData.withColumn(\"hours2\", rand())",
+      "user": "dnair@qubole.com",
+      "dateUpdated": "Jun 11, 2017 4:39:16 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1497197599193_971464791",
+      "id": "20170611-161319_1511198887",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "cumSumHours: org.apache.spark.sql.DataFrame \u003d [Name: string, Role: string ... 2 more fields]\n"
+      },
+      "dateCreated": "Jun 11, 2017 4:13:19 PM",
+      "dateStarted": "Jun 11, 2017 4:39:16 PM",
+      "dateFinished": "Jun 11, 2017 4:39:17 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "cumSumHours.show()",
+      "user": "dnair@qubole.com",
+      "dateUpdated": "Jun 11, 2017 4:39:36 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1497197647823_1039458077",
+      "id": "20170611-161407_357323429",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "+------+---------+------+-------------------+\n|  Name|     Role|Salary|             hours2|\n+------+---------+------+-------------------+\n|   bob|Developer|125000| 0.4473515073486467|\n|  mark|Developer|108000| 0.9314756383075952|\n|  carl|   Tester| 70000|0.18570950676066533|\n| peter|Developer|185000|0.06686974007728608|\n|   jon|   Tester| 65000| 0.7173062219626775|\n| roman|   Tester| 82000|0.03315165463120617|\n| simon|Developer| 98000| 0.5414294854294277|\n|  eric|Developer|144000| 0.5689051683380522|\n|carlos|   Tester| 75000|0.08756380542412234|\n| henry|Developer|110000| 0.9587908695841336|\n+------+---------+------+-------------------+\n\n"
+      },
+      "dateCreated": "Jun 11, 2017 4:14:07 PM",
+      "dateStarted": "Jun 11, 2017 4:39:36 PM",
+      "dateFinished": "Jun 11, 2017 4:39:37 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "val sortedDf \u003d cumSumHours.sort(cumSumHours.col(\"hours2\"))\nsortedDf.show()",
+      "user": "dnair@qubole.com",
+      "dateUpdated": "Jun 11, 2017 4:41:31 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "JOB UI",
+          "group": "spark",
+          "values": [
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-147-157-199.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1496764406844_0020/jobs/job?spark\u003dtrue\u0026id\u003d10"
+          ],
+          "interpreterSettingId": "2CGJ3HP31295361493648705509"
+        }
+      },
+      "jobName": "paragraph_1497199121313_-384536244",
+      "id": "20170611-163841_1052981882",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "sortedDf: org.apache.spark.sql.Dataset[org.apache.spark.sql.Row] \u003d [Name: string, Role: string ... 2 more fields]\n+------+---------+------+-------------------+\n|  Name|     Role|Salary|             hours2|\n+------+---------+------+-------------------+\n| roman|   Tester| 82000|0.03315165463120617|\n| peter|Developer|185000|0.06686974007728608|\n|carlos|   Tester| 75000|0.08756380542412234|\n|  carl|   Tester| 70000|0.18570950676066533|\n|   bob|Developer|125000| 0.4473515073486467|\n| simon|Developer| 98000| 0.5414294854294277|\n|  eric|Developer|144000| 0.5689051683380522|\n|   jon|   Tester| 65000| 0.7173062219626775|\n|  mark|Developer|108000| 0.9314756383075952|\n| henry|Developer|110000| 0.9587908695841336|\n+------+---------+------+-------------------+\n\n"
+      },
+      "dateCreated": "Jun 11, 2017 4:38:41 PM",
+      "dateStarted": "Jun 11, 2017 4:41:31 PM",
+      "dateFinished": "Jun 11, 2017 4:41:32 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "import org.apache.spark.sql.expressions.Window",
+      "user": "dnair@qubole.com",
+      "dateUpdated": "Jun 11, 2017 4:42:01 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1497199224586_1657511703",
+      "id": "20170611-164024_1022509468",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "import org.apache.spark.sql.expressions.Window\n"
+      },
+      "dateCreated": "Jun 11, 2017 4:40:24 PM",
+      "dateStarted": "Jun 11, 2017 4:42:01 PM",
+      "dateFinished": "Jun 11, 2017 4:42:01 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "// Lead Lag\nval window \u003d Window.orderBy(\"hours2\")\nval lagCol \u003d lag(col(\"Salary\"), 1).over(window)\ncumSumHours.withColumn(\"LastSalary\", lagCol).show()",
+      "user": "dnair@qubole.com",
+      "dateUpdated": "Jun 11, 2017 4:53:52 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "JOB UI",
+          "group": "spark",
+          "values": [
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-147-157-199.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1496764406844_0020/jobs/job?spark\u003dtrue\u0026id\u003d13"
+          ],
+          "interpreterSettingId": "2CGJ3HP31295361493648705509"
+        }
+      },
+      "jobName": "paragraph_1497199321053_-1521794341",
+      "id": "20170611-164201_249260108",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "window: org.apache.spark.sql.expressions.WindowSpec \u003d org.apache.spark.sql.expressions.WindowSpec@3e9a74e0\nlagCol: org.apache.spark.sql.Column \u003d lag(Salary, 1, NULL) OVER (ORDER BY hours2 ASC NULLS FIRST UnspecifiedFrame)\n+------+---------+------+-------------------+----------+\n|  Name|     Role|Salary|             hours2|LastSalary|\n+------+---------+------+-------------------+----------+\n| roman|   Tester| 82000|0.03315165463120617|      null|\n| peter|Developer|185000|0.06686974007728608|     82000|\n|carlos|   Tester| 75000|0.08756380542412234|    185000|\n|  carl|   Tester| 70000|0.18570950676066533|     75000|\n|   bob|Developer|125000| 0.4473515073486467|     70000|\n| simon|Developer| 98000| 0.5414294854294277|    125000|\n|  eric|Developer|144000| 0.5689051683380522|     98000|\n|   jon|   Tester| 65000| 0.7173062219626775|    144000|\n|  mark|Developer|108000| 0.9314756383075952|     65000|\n| henry|Developer|110000| 0.9587908695841336|    108000|\n+------+---------+------+-------------------+----------+\n\n"
+      },
+      "dateCreated": "Jun 11, 2017 4:42:01 PM",
+      "dateStarted": "Jun 11, 2017 4:53:52 PM",
+      "dateFinished": "Jun 11, 2017 4:53:53 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "//Trend analysis with window functions \nval salaryDifference \u003d col(\"Salary\") - col(\"LastSalary\")\nval trend \u003d when(col(\"SalaryDiff\").isNull || col(\"SalaryDiff\").\u003d\u003d\u003d(0), \"SAME\").when(col(\"SalaryDiff\").\u003e(0), \"UP\").otherwise(\"DOWN\")\ncumSumHours.withColumn(\"LastSalary\", laggingCol).withColumn(\"SalaryDiff\",salaryDifference).withColumn(\"Trend\", trend).show()\n",
+      "user": "dnair@qubole.com",
+      "dateUpdated": "Jun 11, 2017 4:57:33 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "JOB UI",
+          "group": "spark",
+          "values": [
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-147-157-199.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1496764406844_0020/jobs/job?spark\u003dtrue\u0026id\u003d14"
+          ],
+          "interpreterSettingId": "2CGJ3HP31295361493648705509"
+        }
+      },
+      "jobName": "paragraph_1497199433187_-1226891148",
+      "id": "20170611-164353_397074456",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "salaryDifference: org.apache.spark.sql.Column \u003d (Salary - LastSalary)\ntrend: org.apache.spark.sql.Column \u003d CASE WHEN ((SalaryDiff IS NULL) OR (SalaryDiff \u003d 0)) THEN SAME WHEN (SalaryDiff \u003e 0) THEN UP ELSE DOWN END\n+------+---------+------+-------------------+----------+----------+-----+\n|  Name|     Role|Salary|             hours2|LastSalary|SalaryDiff|Trend|\n+------+---------+------+-------------------+----------+----------+-----+\n| roman|   Tester| 82000|0.03315165463120617|      null|      null| SAME|\n| peter|Developer|185000|0.06686974007728608|     82000|    103000|   UP|\n|carlos|   Tester| 75000|0.08756380542412234|    185000|   -110000| DOWN|\n|  carl|   Tester| 70000|0.18570950676066533|     75000|     -5000| DOWN|\n|   bob|Developer|125000| 0.4473515073486467|     70000|     55000|   UP|\n| simon|Developer| 98000| 0.5414294854294277|    125000|    -27000| DOWN|\n|  eric|Developer|144000| 0.5689051683380522|     98000|     46000|   UP|\n|   jon|   Tester| 65000| 0.7173062219626775|    144000|    -79000| DOWN|\n|  mark|Developer|108000| 0.9314756383075952|     65000|     43000|   UP|\n| henry|Developer|110000| 0.9587908695841336|    108000|      2000|   UP|\n+------+---------+------+-------------------+----------+----------+-----+\n\n"
+      },
+      "dateCreated": "Jun 11, 2017 4:43:53 PM",
+      "dateStarted": "Jun 11, 2017 4:57:33 PM",
+      "dateFinished": "Jun 11, 2017 4:57:34 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1497199834137_484818958",
+      "id": "20170611-165034_445239844",
+      "dateCreated": "Jun 11, 2017 4:50:34 PM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "spark101",
+  "id": "5DCX8Q4BQW1497197536",
+  "angularObjects": {
+    "2CC1VHA3P295361490814775486": [],
+    "2CE4Y2R3M295361490814775490": [],
+    "2CGJ3HP31295361493648705509": [],
+    "2CCWBVN5A295361490814775494": []
+  },
+  "config": {},
+  "info": {},
+  "source": "FCN"
+}
